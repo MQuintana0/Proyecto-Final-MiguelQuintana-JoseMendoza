@@ -1,0 +1,48 @@
+services:
+  # Base de datos MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: multas-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 0578
+      MYSQL_DATABASE: db_multas
+      MYSQL_USER: multas_user
+      MYSQL_PASSWORD: multas_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - multas-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Aplicación Spring Boot
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: multas-app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/db_multas?useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 0578
+    ports:
+      - "8080:8080"
+    networks:
+      - multas-network
+    restart: unless-stopped
+
+networks:
+  multas-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
