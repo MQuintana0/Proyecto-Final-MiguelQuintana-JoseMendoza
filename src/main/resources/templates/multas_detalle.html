@@ -64,3 +64,52 @@
             <i class="bi bi-arrow-left me-1"></i> Volver al listado
           </a>
         </div>
+
+        <div class="card section-card shadow-sm mb-3">
+          <div class="card-body p-4 p-md-4">
+
+            <!-- Resumen tipo "cabecera" -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+              <div>
+                <h4 class="mb-1">
+                  <i class="bi bi-exclamation-octagon text-danger me-1"></i>
+                  <span id="det-tipo">[tipo_de_multa]</span>
+                </h4>
+                <p class="text-muted mb-0">
+                  ID: <span id="det-id">[id_multa]</span> · 
+                  Categoría: <span id="det-categoria">[vehículo/conductor]</span>
+                </p>
+              </div>
+              <div class="text-md-end mt-3 mt-md-0">
+                <div class="small text-muted">Monto calculado</div>
+                <div class="h4 mb-0" id="det-monto">[monto_formateado]</div>
+              </div>
+            </div>
+
+            <hr>
+
+            <!-- Detalle tipo ficha -->
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <h6 class="text-uppercase text-muted small mb-2">Datos asociados</h6>
+                <p class="mb-0" id="det-datos">
+                  [Aquí el backend muestra los datos específicos: matrícula y marca
+                  si es vehículo, nombre, licencia y velocidad si es conductor].
+                </p>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <h6 class="text-uppercase text-muted small mb-2">Información adicional</h6>
+                <p class="mb-1">
+                  <strong>Fecha de registro: </strong>
+                  <span id="det-fecha">[fecha_registro]</span>
+                </p>
+                <p class="mb-0">
+                  <strong>Observaciones: </strong>
+                  <span id="det-observaciones">[observaciones_si_existen]</span>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
