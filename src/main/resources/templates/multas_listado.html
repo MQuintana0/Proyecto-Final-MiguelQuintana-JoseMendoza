@@ -100,3 +100,60 @@
         </p>
       </div>
     </div>
+    
+    <!-- Tabla principal -->
+    <div class="card section-card shadow-sm">
+      <div class="card-body">
+
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Monto</th>
+                <th scope="col" class="text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- FILAS GENERADAS POR EL BACKEND -->
+              <!-- Ejemplo de fila (se puede borrar cuando integren):
+              <tr>
+                <td>1</td>
+                <td><span class="badge bg-primary">Conductor / Velocidad</span></td>
+                <td>Juan Pérez · LIC987 · 110 km/h</td>
+                <td>$ 1.200.000</td>
+                <td class="text-center">
+                  <a href="multas_detalle.html?id=1" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-eye me-1"></i> Ver
+                  </a>
+                </td>
+              </tr>
+              -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Estado vacío (si no hay datos) -->
+        <!-- El backend puede mostrar/ocultar esto según la cantidad de registros -->
+        <div class="text-center text-muted py-4">
+          <i class="bi bi-clipboard-x" style="font-size: 2rem;"></i>
+          <p class="mb-0 mt-2">Todavía no hay multas registradas o los filtros no arrojaron resultados.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="bg-white border-top py-3 mt-auto">
+  <div class="container text-center text-muted small">
+    Sistema de Multas de Tránsito · Listado de multas
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
