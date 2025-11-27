@@ -63,3 +63,40 @@
         <i class="bi bi-arrow-left me-1"></i> Volver al inicio
       </a>
     </div>
+
+    
+    <!-- Toolbar de filtros (frontend simple, el backend decide cómo usarlos) -->
+    <div class="card section-card shadow-sm mb-3">
+      <div class="card-body">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-4">
+            <label class="form-label">Buscar</label>
+            <input type="text" class="form-control" placeholder="Nombre, licencia, matrícula, etc.">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Tipo</label>
+            <select class="form-select">
+              <option value="">Todos</option>
+              <option value="vehiculo">Vehículo</option>
+              <option value="conductor">Conductor</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Ordenar por</label>
+            <select class="form-select">
+              <option value="recientes">Más recientes</option>
+              <option value="monto_mayor">Monto más alto</option>
+              <option value="monto_menor">Monto más bajo</option>
+            </select>
+          </div>
+          <div class="col-md-2 d-grid">
+            <button class="btn btn-primary">
+              <i class="bi bi-funnel me-1"></i> Aplicar
+            </button>
+          </div>
+        </div>
+        <p class="text-muted small mt-2 mb-0">
+          * Estos filtros son solo de interfaz. El backend decide cómo procesarlos.
+        </p>
+      </div>
+    </div>
