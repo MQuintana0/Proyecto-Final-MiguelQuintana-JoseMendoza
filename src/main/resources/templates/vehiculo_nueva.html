@@ -66,4 +66,95 @@
           </a>
         </div>
 
-        
+        <div class="card section-card shadow-sm">
+          <div class="card-body p-4 p-md-5">
+
+            <!-- Ajusta el action al endpoint real del backend -->
+            <form action="/multa/vehiculo/registrar" method="POST">
+
+              <!-- Bloque: Datos del vehículo -->
+              <h5 class="fw-semibold mb-3">
+                <i class="bi bi-car-front me-1 text-primary"></i>
+                Datos del vehículo
+              </h5>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label">Matrícula *</label>
+                  <input type="text" class="form-control" name="matricula" placeholder="Ej: ABC123" required>
+                  <div class="form-text">Placa o número de matrícula del vehículo.</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Marca *</label>
+                  <input type="text" class="form-control" name="marca" placeholder="Ej: Toyota" required>
+                  <div class="form-text">Marca principal del vehículo (Chevrolet, Renault, etc.).</div>
+                </div>
+              </div>
+
+              <hr>
+
+              <!-- Bloque: Tipo de infracción -->
+              <h5 class="fw-semibold mb-3">
+                <i class="bi bi-exclamation-triangle me-1 text-warning"></i>
+                Detalle de la infracción
+              </h5>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label">Tipo de multa *</label>
+                  <select class="form-select" name="tipo_multa" required>
+                    <option value="" selected disabled>Seleccione una opción</option>
+                    <option value="accidente">Accidente de tránsito</option>
+                    <option value="soat">SOAT vencido</option>
+                    <option value="tecnomecanica">Tecnomecánica vencida</option>
+                  </select>
+                  <div class="form-text">
+                    Esta selección se utilizará en el modelo para decidir la clase de multa.
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Gravedad (solo para accidente)</label>
+                  <select class="form-select" name="gravedad">
+                    <option value="">No aplica</option>
+                    <option value="leve">Leve</option>
+                    <option value="moderada">Moderada</option>
+                    <option value="grave">Grave</option>
+                  </select>
+                  <div class="form-text">
+                    Deja "No aplica" si la multa no corresponde a un accidente de tránsito.
+                  </div>
+                </div>
+              </div>
+
+              <div class="alert alert-light border mb-4">
+                <div class="d-flex">
+                  <i class="bi bi-info-circle me-2 mt-1 text-primary"></i>
+                  <div class="small">
+                    El monto de la multa no se calcula aquí en la vista. 
+                    Lo hará el modelo en el backend usando la fábrica de multas.
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex flex-wrap gap-2">
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-save me-1"></i> Guardar multa
+                </button>
+                <a href="index.html" class="btn btn-outline-secondary">
+                  <i class="bi bi-x-circle me-1"></i> Cancelar
+                </a>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+
