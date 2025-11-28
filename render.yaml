@@ -1,0 +1,9 @@
+services:
+  - name: proyecto-final-miguelquintana
+    type: web
+    env: docker
+    branch: main
+    autoDeploy: true
+    plan: free
+    dockerfilePath: Dockerfile
+    # healthCheckPath: "/actuator/health"  # descomenta si tu app expone health endpoint
