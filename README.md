@@ -1,4 +1,4 @@
-# Proyecto-MVC-MiguelQuintana-JoseMendoza
+# Proyecto-Final-MiguelQuintana-JoseMendoza
 
 ## Descripción del Proyecto
 El **Sistema de Gestión de Multas de Tránsito** es una aplicación web desarrollada en **Java con Spring Boot**, diseñada para registrar, consultar y administrar infracciones de tránsito tanto para conductores como para vehículos.
