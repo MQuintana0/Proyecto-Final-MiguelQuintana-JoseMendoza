@@ -20,25 +20,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # Aplicación Spring Boot
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: multas-app
-    depends_on:
-      mysql:
-        condition: service_healthy
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/db_multas?useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: 0578
-    ports:
-      - "8080:8080"
-    networks:
-      - multas-network
-    restart: unless-stopped
-
 networks:
   multas-network:
     driver: bridge
