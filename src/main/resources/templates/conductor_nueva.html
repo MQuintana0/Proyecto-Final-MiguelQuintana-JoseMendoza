@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva multa de conductor · Sistema de Multas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+      body { background: #f3f4f6; }
+      .section-card {
+        border-radius: 18px;
+        border: none;
+      }
+      .badge-soft {
+        background-color: #19875412;
+        color: #198754;
+        font-weight: 500;
+      }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="index.html">
+      <i class="bi bi-traffic-cone me-1"></i>
+      Multas de Tránsito
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="vehiculo_nueva.html">Multa vehículo</a></li>
+        <li class="nav-item"><a class="nav-link active" href="conductor_nueva.html">Multa conductor</a></li>
+        <li class="nav-item"><a class="nav-link" href="multas_listado.html">Listado</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- CONTENIDO -->
+<main class="flex-grow-1">
+  <div class="container py-5">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-9 col-xl-8">
+
+        <div class="mb-3 d-flex justify-content-between align-items-center">
+          <div>
+            <span class="badge rounded-pill badge-soft mb-1">
+              <i class="bi bi-person-fill-exclamation me-1"></i> Multa de conductor
+            </span>
+            <h2 class="fw-semibold mb-1">Registrar multa de conductor</h2>
+            <p class="text-muted mb-0">
+              Registra una infracción asociada al conductor. Los campos con * son obligatorios.
+            </p>
+          </div>
+          <a href="index.html" class="btn btn-outline-secondary d-none d-md-inline-flex">
+            <i class="bi bi-arrow-left me-1"></i> Volver
+          </a>
+        </div>
+        
+        <div class="card section-card shadow-sm">
+          <div class="card-body p-4 p-md-5">
+
+            <!-- Ajusta el action al endpoint real del backend -->
+            <form action="/multa/conductor/registrar" method="POST">
+
+              <!-- Bloque: Datos del conductor -->
+              <h5 class="fw-semibold mb-3">
+                <i class="bi bi-person-badge me-1 text-success"></i>
+                Datos del conductor
+              </h5>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label">Nombre del conductor *</label>
+                  <input type="text" class="form-control" name="nombre" placeholder="Ej: Juan Pérez" required>
+                  <div class="form-text">Nombre completo del conductor infractor.</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Número de licencia *</label>
+                  <input type="text" class="form-control" name="licencia" placeholder="Ej: LIC987" required>
+                  <div class="form-text">Número de licencia asociado al conductor.</div>
+                </div>
+              </div>
+
+              <hr>
+
+              <!-- Bloque: Tipo de infracción -->
+              <h5 class="fw-semibold mb-3">
+                <i class="bi bi-exclamation-octagon me-1 text-danger"></i>
+                Detalle de la infracción
+              </h5>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label">Tipo de multa *</label>
+                  <select class="form-select" name="tipo_multa" required>
+                    <option value="" selected disabled>Seleccione una opción</option>
+                    <option value="cinturon">No usar cinturón</option>
+                    <option value="licencia">Licencia vencida</option>
+                    <option value="velocidad">Exceso de velocidad</option>
+                  </select>
+                  <div class="form-text">
+                    Esta selección se usará para instanciar la clase de multa de conductor en el modelo.
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Velocidad registrada (solo exceso de velocidad)</label>
+                  <input type="number" class="form-control" name="velocidad_registrada" placeholder="Ej: 110">
+                  <div class="form-text">
+                    Si la multa no es por velocidad, puedes dejar este campo vacío.
+                  </div>
+                </div>
+              </div>
+
+              <div class="alert alert-light border mb-4">
+                <div class="d-flex">
+                  <i class="bi bi-info-circle me-2 mt-1 text-success"></i>
+                  <div class="small">
+                    El modelo calculará el monto automáticamente según la velocidad registrada
+                    y las reglas de negocio definidas (rango de km/h).
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex flex-wrap gap-2">
+                <button type="submit" class="btn btn-success">
+                  <i class="bi bi-save me-1"></i> Guardar multa
+                </button>
+                <a href="index.html" class="btn btn-outline-secondary">
+                  <i class="bi bi-x-circle me-1"></i> Cancelar
+                </a>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="bg-white border-top py-3 mt-auto">
+  <div class="container text-center text-muted small">
+    Sistema de Multas de Tránsito · Registro de multas de conductor
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
