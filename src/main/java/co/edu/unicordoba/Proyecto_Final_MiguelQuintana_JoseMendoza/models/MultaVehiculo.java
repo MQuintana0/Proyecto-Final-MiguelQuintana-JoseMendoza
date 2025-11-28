@@ -36,4 +36,9 @@ public abstract class MultaVehiculo implements Serializable {
 
     @Transient
     public abstract double calcularMonto();
+
+    // Método auxiliar para la vista
+    public String getNombreTipo() {
+        return this.getClass().getSimpleName();
+    }
 }

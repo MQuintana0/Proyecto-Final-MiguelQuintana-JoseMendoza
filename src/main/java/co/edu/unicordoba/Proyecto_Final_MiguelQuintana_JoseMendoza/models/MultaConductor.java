@@ -36,4 +36,8 @@ public abstract class MultaConductor implements Serializable {
 
     @Transient
     public abstract double calcularMonto();
+
+    public String getNombreTipo() {
+        return this.getClass().getSimpleName();
+    }
 }
